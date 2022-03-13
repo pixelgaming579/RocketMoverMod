@@ -46,7 +46,7 @@ namespace RocketMoverMod
                 if (GUI.Button(new Rect(borderThickness, 40, menuWidth - (borderThickness*2), 20), "Move Rocket"))
                 {
                     this.currentSubmenu = "Move Rocket";
-                    MsgDrawer.main.Log("Time frozen whilst build menu is open");
+                    MsgDrawer.main.Log("Time frozen whilst Rocket Mover menu is open");
                 }
                 if (GUI.Button(new Rect(borderThickness, 70, menuWidth - (borderThickness*2), 20), "Change Planet"))
                 {
@@ -121,7 +121,7 @@ namespace RocketMoverMod
         }
         public void MoveRocket(float speedX, float speedY, float speedR)
         {
-            WorldTime.main.SetState(0, false, false);
+            WorldTime.main.SetState(0, true, false);
             Rocket playerRocket = PlayerController.main.player.Value as Rocket;
             if (playerRocket)
             {
@@ -138,7 +138,7 @@ namespace RocketMoverMod
                     // print("w");
                     Quaternion preRot = playerRocket.rb2d.transform.localRotation;
                     playerRocket.rb2d.transform.localRotation = Quaternion.identity;
-                    playerRocket.rb2d.transform.Rotate(0, speedY, 0);
+                    playerRocket.rb2d.transform.Translate(0, speedY, 0);
                     playerRocket.rb2d.transform.localRotation = preRot;
                 }
                 else if (Input.GetKeyDown(KeybindingsPC.keys.Move_Rocket_Using_RCS[1].key)) // Left direction.
@@ -154,7 +154,7 @@ namespace RocketMoverMod
                     // print("s");
                     Quaternion preRot = playerRocket.rb2d.transform.localRotation;
                     playerRocket.rb2d.transform.localRotation = Quaternion.identity;
-                    playerRocket.rb2d.transform.Rotate(0, -speedY, 0);
+                    playerRocket.rb2d.transform.Translate(0, -speedY, 0);
                     playerRocket.rb2d.transform.localRotation = preRot;
                 }
                 else if (Input.GetKeyDown(KeybindingsPC.keys.Move_Rocket_Using_RCS[3].key)) // Right direction.
@@ -167,11 +167,11 @@ namespace RocketMoverMod
                 }
                 if (Input.GetKeyDown(KeybindingsPC.keys.Turn_Rocket[0].key))
                 {
-                    playerRocket.rb2d.transform.Rotate(new Vector3(0, 0, -speedR));
+                    playerRocket.rb2d.transform.Rotate(new Vector3(0, 0, speedR));
                 }
                 else if (Input.GetKeyDown(KeybindingsPC.keys.Turn_Rocket[1].key))
                 {
-                    playerRocket.rb2d.transform.Rotate(new Vector3(0, 0, speedR));
+                    playerRocket.rb2d.transform.Rotate(new Vector3(0, 0, -speedR));
                 } 
             }
         }
