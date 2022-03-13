@@ -11,7 +11,7 @@ namespace RocketMoverMod
     {
         GameObject menu;
         bool menuVisible;
-        public Main() : base("RocketMover", "RocketMoverMod", "pixel_gamer579", "v1.1.x", "v0.1", "Allows the player to move the current rocket to other planets/orbits/positions."){}
+        public Main() : base("RocketMover", "RocketMoverMod", "pixel_gamer579", "v1.1.x", "v1.0", "Allows the player to move the current rocket to other planets/orbits/positions."){}
         private void WorldLoaded(object sender, EventArgs e)
         {
             menu = new GameObject("object");
