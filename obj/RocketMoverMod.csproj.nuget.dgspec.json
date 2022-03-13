@@ -1,0 +1,53 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/home/Downloads/RocketMoverMod/RocketMoverMod/RocketMoverMod.csproj": {}
+  },
+  "projects": {
+    "/Users/home/Downloads/RocketMoverMod/RocketMoverMod/RocketMoverMod.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/home/Downloads/RocketMoverMod/RocketMoverMod/RocketMoverMod.csproj",
+        "projectName": "RocketMoverMod",
+        "projectPath": "/Users/home/Downloads/RocketMoverMod/RocketMoverMod/RocketMoverMod.csproj",
+        "packagesPath": "/Users/home/.nuget/packages/",
+        "outputPath": "/Users/home/Downloads/RocketMoverMod/RocketMoverMod/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/home/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net4.7"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net47": {
+            "targetAlias": "net4.7",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net47": {
+          "targetAlias": "net4.7",
+          "dependencies": {
+            "Microsoft.NETFramework.ReferenceAssemblies": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.0.0, )",
+              "autoReferenced": true
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.405/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
