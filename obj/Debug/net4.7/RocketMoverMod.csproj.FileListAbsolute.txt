@@ -1,9 +1,0 @@
-/Users/home/Downloads/RocketMoverMod/RocketMoverMod/bin/Debug/net4.7/RocketMoverMod.dll
-/Users/home/Downloads/RocketMoverMod/RocketMoverMod/bin/Debug/net4.7/RocketMoverMod.pdb
-/Users/home/Downloads/RocketMoverMod/RocketMoverMod/obj/Debug/net4.7/RocketMoverMod.csproj.AssemblyReference.cache
-/Users/home/Downloads/RocketMoverMod/RocketMoverMod/obj/Debug/net4.7/RocketMoverMod.GeneratedMSBuildEditorConfig.editorconfig
-/Users/home/Downloads/RocketMoverMod/RocketMoverMod/obj/Debug/net4.7/RocketMoverMod.AssemblyInfoInputs.cache
-/Users/home/Downloads/RocketMoverMod/RocketMoverMod/obj/Debug/net4.7/RocketMoverMod.AssemblyInfo.cs
-/Users/home/Downloads/RocketMoverMod/RocketMoverMod/obj/Debug/net4.7/RocketMoverMod.csproj.CoreCompileInputs.cache
-/Users/home/Downloads/RocketMoverMod/RocketMoverMod/obj/Debug/net4.7/RocketMoverMod.dll
-/Users/home/Downloads/RocketMoverMod/RocketMoverMod/obj/Debug/net4.7/RocketMoverMod.pdb
