@@ -2,6 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net4.7</TargetFramework>
     <EnableDefaultCompileItems>False</EnableDefaultCompileItems>
+    <!-- <OutputPath> -->
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
@@ -45,4 +46,22 @@
     <Compile Include="Main.cs" />
     <Compile Include="RocketMoverMenu.cs" />
   </ItemGroup>
+  <!-- <PropertyGroup>
+    <PostBuildEvent>
+      del *.pdb
+      @setlocal enableextensions enabledelayedexpansion
+
+      set modpath="/Users/home/Library/Application\ Support/Steam/steamapps/common/Spaceflight\ Simulator/SpaceflightSimulatorGame.app/Contents/MODS/RocketMoverMod/"
+
+      if not exist !modpath! (
+      echo Creating mod folder
+      mkdir !modpath!
+      )
+
+      set e=$(TargetDir)..\&amp;amp;gt;nul
+      xcopy /S /Y /R "!e:~0,-1!" !modpath!
+
+      start "" "steam://rungameid/1718870"
+    </PostBuildEvent>
+  </PropertyGroup> -->
 </Project>
