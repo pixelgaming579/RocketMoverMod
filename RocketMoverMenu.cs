@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using SFS.World;
 using SFS.WorldBase;
@@ -14,6 +12,7 @@ namespace RocketMoverMod
     {
         Dictionary<string, Planet> planets = planetLoader.planets;
         List<string> planetNames = new List<string>();
+        Vector2 scrollVec = Vector2.zero;
         private void Start()
         {
             foreach (string planetName in planets.Keys)
@@ -24,7 +23,6 @@ namespace RocketMoverMod
         private static int menuWidth = 200;
         private int borderThickness = 10;
         int selectedPlanetIndex;
-        float changePlanetScrollBar = 0;
         string currentSubmenu = "";
         float RocketMoverX = 5f;
         float RocketMoverY = 5f;
@@ -53,7 +51,7 @@ namespace RocketMoverMod
         }
         public void UpdateMainMenu(int windowID)
         {
-                GUI.Label(new Rect(borderThickness, 20, menuWidth - (borderThickness*2), 20), "Press \\ to hide this menu");
+                GUI.Label(new Rect(borderThickness, 20, menuWidth - (borderThickness*2), 20), "Press \\ to hide this menu.");
                 if (GUI.Button(new Rect(borderThickness, 40, menuWidth - (borderThickness*2), 20), "Move Rocket"))
                 {
                     this.currentSubmenu = "Move Rocket";
@@ -130,11 +128,17 @@ namespace RocketMoverMod
             else if (this.currentSubmenu == "Change Planet")
             {
                 GUI.Label(new Rect(borderThickness, 20, menuWidth - (borderThickness*2), 50), "Select a planet from the list below, then press the \"Teleport to\" button to teleport.");
-                if (GUI.Button(new Rect(borderThickness, 20, menuWidth - (borderThickness*2), 20), "Teleport to "+this.planetNames[selectedPlanetIndex]))
+                if (GUI.Button(new Rect(borderThickness, 70, menuWidth - (borderThickness*2), 20), "Teleport to "+this.planetNames[selectedPlanetIndex]))
                 {
                     ChangePlanet();
                 }
-                selectedPlanetIndex = GUI.SelectionGrid(new Rect(borderThickness, 100, menuWidth - (borderThickness*2), 180), selectedPlanetIndex, this.planetNames.ToArray(), 2);
+                this.scrollVec = GUI.BeginScrollView(new Rect(borderThickness, 95, menuWidth - (borderThickness*2), 130), this.scrollVec, new Rect(0, 75, menuWidth - (borderThickness*2), planets.Count*15), false, true, GUIStyle.none, GUI.skin.verticalScrollbar);
+                selectedPlanetIndex = GUI.SelectionGrid(new Rect(0, 75, menuWidth - (borderThickness*2) - 20, planets.Count*15), selectedPlanetIndex, this.planetNames.ToArray(), 2);
+                GUILayout.EndScrollView();
+                if (GUI.Button(new Rect(borderThickness, 230, menuWidth - (borderThickness*2), 20), "Close Change Planet Menu"))
+                {
+                    this.currentSubmenu = "";
+                }
             }
             else if (this.currentSubmenu == "Set Orbit")
             {
@@ -207,7 +211,15 @@ namespace RocketMoverMod
                 WorldLocation newLocation = new WorldLocation();
                 newLocation.planet = planet_local;
                 SFS.Variables.Double2_Local pos = new SFS.Variables.Double2_Local();
-                pos.Value = new Double2(0, planet.GetTerrainHeightAtAngle(0.1*Mathf.Deg2Rad));
+                // if (!planet.data.hasTerrain)
+                // {
+                //     pos.Value = new Double2(0, planet.GetTerrainHeightAtAngle(0));
+                // }
+                // else
+                // {
+                //     pos.Value = new Double2(0, planet.GetTerrainHeightAtAngle(0));
+                // }
+                pos.Value = new Double2(0, planet.OrbitRadius);
                 newLocation.position = pos;
                 (PlayerController.main.player.Value as Rocket).physics.SetLocationAndState(newLocation.Value, (PlayerController.main.player.Value as Rocket).physics.PhysicsMode);
             }
